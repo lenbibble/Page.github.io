@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slideshow</title>
+    <style>
+      /* .slideshow-container{
+        
+      } */
+      @keyframes move{
+        from{
+          left:0%
+        }
+        to{
+          left: 90%;
+        }
+      }
+      .imgStyle{
+        width: 99%;
+        border: 1px red solid;
+        border-radius: 50px;       
+      }
+      .mySlides{
+        border: black 1px solid ;
+        text-align: center;
+        display: none;
+      }
+      .Moving-Animation{
+        position:relative;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+      }
+      
+    </style>
+    <script>
+      let count = 0;
+      const showSlides = ()=>{
+        let slides = document.querySelectorAll('.mySlides');
+        slides.forEach(slide => {
+          slide.style.display="none";
+          slide.style.animationPlayState = "pause";
+        })
+        slides[count].style.display = "block";
+        slides[count].style.animationPlayState = "running";
+        count++;
+        if(count === slides.length){
+          count = 0;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="slideshow-container">
+
+      <button class="ButtonDisplay Moving-Animation" onclick="showSlides()">Display</button>
+
+      <div class="mySlides">
+        <img src="./img_nature_wide.jpg" class="imgStyle">
+      </div>
+
+      <div class="mySlides">
+        <img src="./img_snow_wide.jpg" class="imgStyle">
+      </div>
+
+      <div class="mySlides">
+        <img src="./img_mountains_wide.jpg" class="imgStyle">
+      </div>
+
+
+    </div>
+  </body>
+</html>
